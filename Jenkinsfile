@@ -1,8 +1,7 @@
-pipeline {
+ppipeline {
     agent any
 
     stages {
-
         stage('Compile') {
             steps {
                 sh 'mvn compile'
@@ -20,14 +19,17 @@ pipeline {
                 sh 'mvn package'
             }
         }
+
+        stage('Run') {
+            steps {
+                sh 'java -cp target/classes com.example.App'
+            }
+        }
     }
 
     post {
         success {
             echo 'Build Successful'
-        }
-        failure {
-            echo 'Build Failed'
         }
     }
 }
