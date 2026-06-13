@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Dhanesh18101/MyMavenApp.git'
-            }
-        }
-
         stage('Compile') {
             steps {
                 sh 'mvn compile'
@@ -32,7 +26,6 @@ pipeline {
         success {
             echo 'Build Successful'
         }
-
         failure {
             echo 'Build Failed'
         }
